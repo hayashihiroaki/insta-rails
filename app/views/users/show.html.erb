@@ -1,0 +1,28 @@
+<h3><%= @user.email %></h3>
+
+<% if user_signed_in? && current_user != @user %>
+  <% if current_user.active_relationships.exists?(target_user_id: @user.id) %>
+    <%= link_to 'unfollow', [@user, :follow], method: :delete %>
+  <% else %>
+    <%= link_to 'follow', [@user, :follow], method: :post %>
+  <% end %>
+<% end %>
+
+<div>
+  <ul>
+    <li>
+      <%= link_to 'followings', [@user, :followings] %>
+    </li>
+    <li>
+      <%= link_to 'followers', [@user, :followers] %>
+    </li>
+
+  </ul>
+</div>
+
+<% @user.photos.each do |photo| %>
+  <div>
+    <p><%= photo.caption %></p>
+    <%= image_tag photo.image %>
+  </div>
+<% end %>
