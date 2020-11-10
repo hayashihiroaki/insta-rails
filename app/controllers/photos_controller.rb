@@ -1,5 +1,10 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
+
+  def show
+    @photo = Photo.find(params[:id])
+    @comment = Comment.new
+  end
 
   def new
     @photo = current_user.photos.new
@@ -13,6 +18,12 @@ class PhotosController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def destroy
+    current_user.photos.find(params[:id]).destroy
+
+    redirect_to [current_user]
   end
 
   private
