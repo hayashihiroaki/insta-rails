@@ -2,7 +2,7 @@
 <div class="tabs">
   <ul>
     <li>
-      <%= link_to '写真投稿', [:new, :photo] %>
+      <%= link_to '写真投稿', new_photo_path %>
     </li>
     <% if user_signed_in? %>
       <li class="navbar-item">ようこそ<%= current_user.email %>さん</li>
