@@ -2,22 +2,22 @@
 
 <% if user_signed_in? && current_user != @user %>
   <% if current_user.active_relationships.exists?(target_user_id: @user.id) %>
-    <%= link_to 'unfollow', [@user, :follow], method: :delete %>
+    <%= link_to 'フォローをはずす', [@user, :follow], method: :delete %>
   <% else %>
-    <%= link_to 'follow', [@user, :follow], method: :post %>
+    <%= link_to 'フォロー', [@user, :follow], method: :post %>
   <% end %>
 <% end %>
 
 <div class="tabs">
   <ul>
     <li>
-      <%= link_to 'followings', [@user, :followings] %>
+      <%= link_to 'フォロー', [@user, :followings] %>
     </li>
     <li>
-      <%= link_to 'followers', [@user, :followers] %>
+      <%= link_to 'フォロワー', [@user, :followers] %>
     </li>
     <li>
-      <%= link_to 'likes', [@user, :likes] %>
+      <%= link_to 'いいねした投稿', [@user, :likes] %>
     </li>
   </ul>
 </div>
