@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     comment = current_user.comments.find(params[:id])
     comment.destroy
 
-    redirect_to [:photo, {id: params[:photo_id]}]
+    redirect_to [:photo, { id: params[:photo_id] }]
   end
 
   private
@@ -24,5 +24,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body).merge(photo_id: params[:photo_id])
   end
-
 end

@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     current_user.photos.find(params[:id]).destroy
 
